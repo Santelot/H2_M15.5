@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H2 - M15.5</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Saludar a los genios y preparar el ambiente para el aprendizaje.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy vamos a poner en práctica nuestras habilidades en Glide para llevar la comunicación en nuestra app al siguiente nivel."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar, quiero ver cómo están hoy. Si están listos para este reto de diseño, toquen su tobillo derecho. Si necesitan un poco de ánimo, den una pequeña palmada en la espalda."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Como siempre, juntemos nuestras manos en agradecimiento por esta oportunidad de practicar y fortalecer nuestras habilidades en tecnología. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos dos objetivos importantes: 1. Diseñar una funcionalidad de chat en Glide. 2. Asegurar que el chat sea claro y accesible para mejorar la comunicación en la app."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🔄 Actividad 2: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Ejercicio para mejorar la concentración y reducir el estrés.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Cierre de Ojos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, vamos a hacer un ejercicio breve para afinar nuestra atención. Cerrar los ojos y escuchar los sonidos a su alrededor les ayudará a concentrarse y a ser más conscientes de su entorno."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 "Tiempo de Escucha".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre la Escucha".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Este ejercicio ayuda a reducir el estrés y a mejorar la concentración, lo cual es importante cuando trabajamos en proyectos que requieren atención al detalle, como el diseño de nuestra app."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">👥 Actividad 3: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Organización de equipos y recolección de dispositivos para la actividad.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, únanse con sus equipos de proyecto en los que han estado desarrollando la app. Tienen un minuto para organizarse."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Tiempo para Formar Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 11 "Recoger Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Envien a un representante de su equipo para recoger las Magic Tablets. Tienen un minuto para hacerlo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Tiempo para Recoger Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 4: Challenge ⏰ Tiempo: 33.5 minutos</div>
+        <div class="subtitle">Diseño de funcionalidad de chat en Glide.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 13 "Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Es hora del Challenge, Genios. Vamos a poner en práctica nuestras habilidades y diseñar un chat dentro de nuestra app en Glide."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 14 "Detalles del Reto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para este reto, diseñarán un sistema de chat dentro de su app de tareas. Aprovechen lo que ya saben sobre comentarios para crear un espacio de comunicación claro y funcional. Piensen en cómo organizar los mensajes para que sean fáciles de leer y asegúrense de que el chat sea accesible y visualmente atractivo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (30 minutos):</strong> Proyectar Diapositiva 15 "Tiempo para el Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 16 "Captura de Trabajo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, asegúrense de tomar una foto de la funcionalidad de chat que diseñaron, ya que la necesitaremos para la próxima clase. Esto ayudará a dar continuidad a su proyecto."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (1 minuto):</strong> Proyectar Diapositiva 17 "Objetivos Completados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy logramos los dos objetivos de la misión: diseñamos una funcionalidad de chat en Glide y aseguramos que sea clara y accesible para mejorar la comunicación en la app. ¡Gran trabajo!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (0.5 minutos):</strong> Proyectar Diapositiva 18 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Excelente trabajo, Genios. Su dedicación y creatividad en este reto merecen un reconocimiento especial. ¡You've Got Mon-e!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🏅 Actividad 5: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Cierre de la misión y orden del espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 19 "Honor de Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es momento de cerrar la misión de hoy y honrar el espacio en el que trabajamos. Les pido que cada equipo pase al frente y devuelva sus Magic Tablets. Vamos a asegurarnos de dejar todo en orden, listos para la siguiente sesión."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
